@@ -1,0 +1,15 @@
+➜  part1 docker run --name nodeJS -d -it node:lts-alpine3.14
+1cc6ec2edc513f67ccda09f3dacb93a9484cc3dcc1fa65b93d0f80903dd77eec
+➜  part1 docker run --name mongoDB -d mongo                
+517c4917b5a2b46e2751a18781236ff87c6590831e870d253dff22ad18ace7c7
+➜  part1 docker run --name nginx -d nginx:mainline-alpine-perl
+58ebeba4facdfd779fdcd5726c616aef6b14df9c0797dc988599453f7f4d6f86
+➜  part1 docker stop nodeJS
+nodeJS
+➜  part1 docker stop mongoDB
+mongoDB
+➜  part1 docker ps -a
+CONTAINER ID   IMAGE                        COMMAND                  CREATED              STATUS                        PORTS     NAMES
+58ebeba4facd   nginx:mainline-alpine-perl   "/docker-entrypoint.…"   54 seconds ago       Up 51 seconds                 80/tcp    nginx
+517c4917b5a2   mongo                        "docker-entrypoint.s…"   About a minute ago   Exited (0) 9 seconds ago                mongoDB
+1cc6ec2edc51   node:lts-alpine3.14          "docker-entrypoint.s…"   About a minute ago   Exited (137) 15 seconds ago             nodeJS

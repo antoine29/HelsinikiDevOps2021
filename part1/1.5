@@ -1,0 +1,33 @@
+➜  part1 docker pull devopsdockeruh/simple-web-service:alpine
+alpine: Pulling from devopsdockeruh/simple-web-service
+ba3557a56b15: Pull complete 
+1dace236434b: Pull complete 
+4f4fb700ef54: Pull complete 
+Digest: sha256:dd4d367476f86b7d7579d3379fe446ae5dfce25480903fb0966fc2e5257e0543
+Status: Downloaded newer image for devopsdockeruh/simple-web-service:alpine
+docker.io/devopsdockeruh/simple-web-service:alpine
+➜  part1 docker image ls | grep devopsdocker
+devopsdockeruh/simple-web-service   ubuntu                 4e3362e907d5   4 months ago   83MB
+devopsdockeruh/simple-web-service   alpine                 fd312adc88e0   4 months ago   15.7MB
+➜  part1 docker run --name ubuntu_alpine -d devopsdockeruh/simple-web-service:alpine     
+0f518399239d3d0f995382fd667d019a8a248c558ebdbe1ed0323cad9fc09d12
+➜  part1 docker exec -it ubuntu_alpine ash 
+/usr/src/app # tail -f ./text.log
+2021-08-10 19:10:18 +0000 UTC
+2021-08-10 19:10:20 +0000 UTC
+2021-08-10 19:10:22 +0000 UTC
+2021-08-10 19:10:24 +0000 UTC
+2021-08-10 19:10:26 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2021-08-10 19:10:28 +0000 UTC
+2021-08-10 19:10:30 +0000 UTC
+2021-08-10 19:10:32 +0000 UTC
+2021-08-10 19:10:34 +0000 UTC
+2021-08-10 19:10:36 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2021-08-10 19:10:38 +0000 UTC
+2021-08-10 19:10:40 +0000 UTC
+2021-08-10 19:10:42 +0000 UTC
+^C
+/usr/src/app # exit
+

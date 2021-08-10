@@ -1,0 +1,12 @@
+➜  part1 docker run --name ubuntu0 -it --rm ubuntu bash -c 'apt-get -y update > /dev/null; apt-get -y install curl > /dev/null; echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;' 
+debconf: delaying package configuration, since apt-utils is not installed
+Input website:
+helsinki.fi
+Searching..
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="https://www.helsinki.fi/">here</a>.</p>
+</body></html>

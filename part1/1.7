@@ -1,0 +1,20 @@
+➜  part1 docker build -f Dockerfile1.7 -t web-server . 
+Sending build context to Docker daemon  15.36kB
+Step 1/2 : FROM devopsdockeruh/simple-web-service
+ ---> 99f995eeaa58
+Step 2/2 : CMD server
+ ---> Running in 0f00dc89568c
+Removing intermediate container 0f00dc89568c
+ ---> f807d721f4ef
+Successfully built f807d721f4ef
+Successfully tagged web-server:latest
+➜  part1 docker run web-server
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /*path                    --> server.Start.func1 (3 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
+

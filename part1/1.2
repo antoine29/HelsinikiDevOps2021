@@ -1,0 +1,27 @@
+➜  part1 docker stop nginx
+nginx
+➜  part1 docker system prune
+WARNING! This will remove:
+  - all stopped containers
+  - all networks not used by at least one container
+  - all dangling images
+  - all dangling build cache
+
+Are you sure you want to continue? [y/N] y
+Deleted Containers:
+58ebeba4facdfd779fdcd5726c616aef6b14df9c0797dc988599453f7f4d6f86
+517c4917b5a2b46e2751a18781236ff87c6590831e870d253dff22ad18ace7c7
+1cc6ec2edc513f67ccda09f3dacb93a9484cc3dcc1fa65b93d0f80903dd77eec
+
+Total reclaimed space: 1.093kB
+➜  part1 docker image prune
+WARNING! This will remove all dangling images.
+Are you sure you want to continue? [y/N] N
+Total reclaimed space: 0B
+➜  part1 docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+➜  part1 docker images
+REPOSITORY   TAG                    IMAGE ID       CREATED      SIZE
+node         lts-alpine3.14         20b622e753ce   3 days ago   118MB
+nginx        mainline-alpine-perl   13336ef87df2   3 days ago   57.5MB
+mongo        latest                 269b735e72cb   4 days ago   682MB
