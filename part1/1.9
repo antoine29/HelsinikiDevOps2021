@@ -1,0 +1,10 @@
+➜  part1 git:(main) touch text.log
+➜  part1 git:(main) docker run -v "$(pwd)/text.log:/usr/src/app/text.log" --rm devopsdockeruh/simple-web-service:alpine
+➜  part1 git:(main) ✗ cat text.log
+2021-08-11 18:54:38 +0000 UTC
+2021-08-11 18:54:40 +0000 UTC
+2021-08-11 18:54:42 +0000 UTC
+2021-08-11 18:54:44 +0000 UTC
+2021-08-11 18:54:46 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2021-08-11 18:54:48 +0000 UTC
