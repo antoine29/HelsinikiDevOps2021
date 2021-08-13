@@ -1,0 +1,2 @@
+➜  part1 docker build -f Dockerfile1.11 . -t spring-example
+➜  part1 docker run --name javac -it --rm -p 8080:8080 spring-example

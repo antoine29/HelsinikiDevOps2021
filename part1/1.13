@@ -1,0 +1,2 @@
+➜  part1 docker build -f Dockerfile1.13 . -t backend-example
+➜  part1 docker run --name backend-example -it --rm -p 8080:8080 backend-example

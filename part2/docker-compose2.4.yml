@@ -1,0 +1,27 @@
+version: '3.5' 
+
+services: 
+  redis-cache: 
+    image: redis:alpine3.14
+    ports:
+      - 6379:6379
+    restart: unless-stopped
+    container_name: redis-cache
+  backend: 
+    image: stack_backend
+    build:
+      context: .
+      args:
+        redis_host_param: redis-cache
+      dockerfile: Dockerfile2.4Back
+    ports:
+      - 8080:8080
+    container_name: backend
+  frontend: 
+    image: stack_frontend
+    build:
+      context: ../part1
+      dockerfile: Dockerfile1.14Front
+    ports:
+      - 5000:5000
+    container_name: frontend

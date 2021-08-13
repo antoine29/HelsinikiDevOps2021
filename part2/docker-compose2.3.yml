@@ -1,0 +1,19 @@
+version: '3.5' 
+
+services: 
+  backend: 
+    image: stack_backend
+    build:
+      context: ../part1
+      dockerfile: Dockerfile1.14Back
+    ports:
+      - 8080:8080
+    container_name: backend
+  frontend: 
+    image: stack_frontend
+    build:
+      context: ../part1
+      dockerfile: Dockerfile1.14Front
+    ports:
+      - 5000:5000
+    container_name: frontend

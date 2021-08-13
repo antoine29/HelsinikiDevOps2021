@@ -1,0 +1,18 @@
+FROM golang:rc-alpine3.14
+
+EXPOSE 8080
+
+WORKDIR /usr/src/app
+
+RUN apk add git
+RUN git clone https://github.com/docker-hy/material-applications.git
+RUN cp -r material-applications/example-backend/ .
+RUN rm -rf material-applications/
+
+WORKDIR /usr/src/app/example-backend
+
+RUN go build
+
+ENV GIN_MODE=release
+
+CMD ./server

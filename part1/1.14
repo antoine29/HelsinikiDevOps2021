@@ -1,0 +1,4 @@
+➜  part1 docker build -f Dockerfile1.14Back . -t stack_backend
+➜  part1 docker build -f Dockerfile1.14Front . -t stack_frontend
+➜  part1 docker run --name backend -it --rm -p 8080:8080 stack_backend 
+➜  part1 docker run --name frontend -it --rm -p 5000:5000 stack_frontend

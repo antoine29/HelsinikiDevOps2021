@@ -1,0 +1,2 @@
+➜  part1 docker build -f Dockerfile1.12 . -t frontend-example
+➜  part1 docker run --name frontend-example -it --rm -p 5000:5000 frontend-example
