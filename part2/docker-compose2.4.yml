@@ -13,7 +13,7 @@ services:
       context: .
       args:
         redis_host_param: redis-cache
-      dockerfile: Dockerfile2.4Back
+      dockerfile: Dockerfile2.4Backend
     ports:
       - 8080:8080
     container_name: backend
@@ -21,7 +21,7 @@ services:
     image: stack_frontend
     build:
       context: ../part1
-      dockerfile: Dockerfile1.14Front
+      dockerfile: Dockerfile1.14Frontend
     ports:
       - 5000:5000
     container_name: frontend
