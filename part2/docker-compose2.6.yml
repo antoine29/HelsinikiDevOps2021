@@ -1,0 +1,56 @@
+version: '3.5' 
+
+services: 
+  redis-cache: 
+    image: redis:alpine3.14
+    ports:
+      - 6379:6379
+    restart: unless-stopped
+    container_name: redis-cache
+
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: password
+    container_name: postgres_db
+    volumes:
+      - PGDBVol:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer:4
+    restart: always
+    environment:
+      - ADMINER_DESIGN=galkaev
+    ports:
+      - 8083:8080
+    depends_on:
+      - db
+
+  frontend: 
+    image: stack_frontend
+    build:
+      context: ../part1
+      dockerfile: Dockerfile1.14Frontend
+    ports:
+      - 5000:5000
+    container_name: frontend
+
+  backend: 
+    image: stack_backend
+    build:
+      context: .
+      args:
+        redis_host_param: redis-cache
+        postgres_host_param: db
+        postgres_user_param: postgres
+        postgres_password_param: password
+        postgres_database_param: postgres
+      dockerfile: Dockerfile2.4Backend
+    ports:
+      - 8080:8080
+    container_name: backend
+
+volumes:
+  PGDBVol:
+  files:
