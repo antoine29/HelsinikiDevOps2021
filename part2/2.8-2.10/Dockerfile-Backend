@@ -1,30 +1,31 @@
+FROM alpine/git:latest as git
+WORKDIR /app
+RUN git clone https://github.com/docker-hy/material-applications.git
+    #pwd &&\
+    #echo -e "\n" &&\
+    #ls -la
+
 FROM golang:rc-alpine3.14
+EXPOSE 8080
+WORKDIR /app
+COPY --from=git /app/material-applications/example-backend/ .
 
 ARG redis_host_param
 ARG postgres_host_param
 ARG postgres_user_param
 ARG postgres_password_param
 ARG postgres_database_param
-
-EXPOSE 8080
-
-WORKDIR /usr/src/app
-
-RUN apk add git
-RUN git clone https://github.com/docker-hy/material-applications.git
-RUN cp -r material-applications/example-backend/ .
-RUN rm -rf material-applications/
-
-WORKDIR /usr/src/app/example-backend
-
-RUN go build
+ARG allowed_origins
 
 ENV REQUEST_ORIGIN=http://localhost:5000
+ENV REQUEST_ORIGIN=$allowed_origins
 ENV GIN_MODE=release
 ENV REDIS_HOST=$redis_host_param
 ENV POSTGRES_HOST=$postgres_host_param
 ENV POSTGRES_USER=$postgres_user_param
 ENV POSTGRES_PASSWORD=$postgres_password_param
 ENV POSTGRES_DATABASE=$postgres_database_param
+
+RUN go build
 
 CMD ./server
